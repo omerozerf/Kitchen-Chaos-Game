@@ -10,6 +10,11 @@ public class Player : MonoBehaviour
     
     private void Update()
     {
+        Move();
+    }
+
+    private void Move()
+    {
         Vector2 inputVector = new Vector2(0, 0);
         
         if (Input.GetKey(KeyCode.W))
@@ -31,8 +36,12 @@ public class Player : MonoBehaviour
 
         inputVector = inputVector.normalized;
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
-        transform.position += moveDir * (Time.deltaTime * moveSpeed);
-        Debug.Log(inputVector);
         
+        transform.position += moveDir * (Time.deltaTime * moveSpeed);
+
+        var rotateSpeed = 10;
+        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), Time.deltaTime * rotateSpeed );
     }
 }
