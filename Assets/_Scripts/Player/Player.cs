@@ -38,6 +38,14 @@ public class Player : MonoBehaviour
         bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight,
             playerRadius, moveDir, moveDistance);
 
+        if (!canMove)
+        {
+            // Cannot move towards moveDir
+            
+            // Attempt only X movement
+            
+        }
+
         if (canMove)
         {
             transform.position += moveDir * (Time.deltaTime * moveSpeed);
