@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Move();
+        
+        
     }
 
     private void Move()
@@ -29,9 +31,16 @@ public class Player : MonoBehaviour
         var inputVector = GameInput.Instance.GetMovementVectorNormalized();
         
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
-        
-        transform.position += moveDir * (Time.deltaTime * moveSpeed);
 
+        var playerSize = .7f;
+        bool canMove = !Physics.Raycast(transform.position, moveDir, playerSize);
+
+        if (canMove)
+        {
+            transform.position += moveDir * (Time.deltaTime * moveSpeed);
+            Debug.DrawRay(transform.position, moveDir, Color.black);
+        }
+        
         isWalking = moveDir != Vector3.zero;
         
         var rotateSpeed = 10;
