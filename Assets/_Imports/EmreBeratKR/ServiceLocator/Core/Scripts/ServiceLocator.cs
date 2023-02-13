@@ -15,7 +15,19 @@ namespace EmreBeratKR.ServiceLocator
         private static readonly Dictionary<Type, IService> Services = new();
 
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        public static bool AutoRegister
+        {
+            get => GetAutoRegister();
+            set => SetAutoRegister(value);
+        }
+
+        public static bool DoNotDestroyOnLoad
+        {
+            get => GetDoNotDestroyOnLoad();
+            set => SetDoNotDestroyOnLoad(value);
+        }
+        
+        
         private static void Initialize()
         {
             AutoRegisterServices();
@@ -23,7 +35,7 @@ namespace EmreBeratKR.ServiceLocator
 
 
         public static void Register<T>(T service, bool overrideIfRegisteredAlready = false)
-            where T : IService, new()
+            where T : class, IService, new()
         {
             var type = typeof(T);
 
@@ -32,11 +44,11 @@ namespace EmreBeratKR.ServiceLocator
                 throw ServiceLocatorException.AlreadyRegistered(type);
             }
 
-            Services[type] = service;
+            Register(type, service);
         }
 
         public static T Get<T>(bool findOrCreateAndRegisterIfNotRegistered = false)
-            where T : IService, new()
+            where T : class, IService, new()
         {
             var type = typeof(T);
             
@@ -75,6 +87,21 @@ namespace EmreBeratKR.ServiceLocator
         }
 
 
+        private static void Register(Type type, IService service)
+        {
+            if (ShouldDoNotDestroyOnLoad(type))
+            {
+                MarkAsDoNotDestroyOnLoad((MonoBehaviour) service);
+            }
+
+            if (service is MonoBehaviour serviceBehaviour)
+            {
+                serviceBehaviour.name = GetServiceName(type);
+            }
+            
+            Services[type] = service;
+        }
+        
         private static IService FindOrCreateService(Type type)
         {
             return type.CanCastTo<MonoBehaviour>()
@@ -134,7 +161,8 @@ namespace EmreBeratKR.ServiceLocator
 
         private static void AutoRegisterService(Type type)
         {
-            Services[type] = FindOrCreateService(type);
+            var service = FindOrCreateService(type);
+            Register(type, service);
         }
 
         private static IEnumerable<Type> GetAllAutoRegisteredServices()
@@ -142,10 +170,64 @@ namespace EmreBeratKR.ServiceLocator
             return AppDomain.CurrentDomain
                 .GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
-                .Where(type => !type.IsInterface)
-                .Where(type => !type.IsAbstract)
-                .Where(type => type.CanCastTo<IService>())
-                .Where(type => type.GetCustomAttribute<DoNotAutoRegisterAttribute>() == null);
+                .Where(ShouldAutoRegister);
+        }
+
+        private static bool ShouldAutoRegister(Type type)
+        {
+            if (!type.IsClass) return false;
+
+            if (type.IsAbstract) return false;
+
+            if (!type.CanCastTo<IService>()) return false;
+
+            var attribute = type.GetCustomAttribute<ServiceRegistrationAttribute>();
+
+            if (attribute == null) return AutoRegister;
+
+            if (attribute.mode == ServiceRegistrationMode.UseGlobal) return AutoRegister;
+
+            return attribute.mode == ServiceRegistrationMode.AutoRegister;
+        }
+        
+        private static bool ShouldDoNotDestroyOnLoad(Type type)
+        {
+            if (!type.CanCastTo<MonoBehaviour>()) return false;
+
+            if (!type.CanCastTo<IService>()) return false;
+            
+            var attribute = type.GetCustomAttribute<ServiceSceneLoadAttribute>();
+
+            if (attribute == null) return DoNotDestroyOnLoad;
+
+            if (attribute.mode == ServiceSceneLoadMode.UseGlobal) return DoNotDestroyOnLoad;
+
+            return attribute.mode == ServiceSceneLoadMode.DoNotDestroy;
+        }
+
+        private static void MarkAsDoNotDestroyOnLoad(MonoBehaviour target)
+        {
+            Object.DontDestroyOnLoad(target);
+        }
+
+        private static bool GetAutoRegister()
+        {
+            return ServiceLocatorSettingsSO.Instance.AutoRegister;
+        }
+
+        private static void SetAutoRegister(bool value)
+        {
+            ServiceLocatorSettingsSO.Instance.AutoRegister = value;
+        }
+
+        private static bool GetDoNotDestroyOnLoad()
+        {
+            return ServiceLocatorSettingsSO.Instance.DoNotDestroyOnLoad;
+        }
+
+        private static void SetDoNotDestroyOnLoad(bool value)
+        {
+            ServiceLocatorSettingsSO.Instance.DoNotDestroyOnLoad = value;
         }
     }
 }
