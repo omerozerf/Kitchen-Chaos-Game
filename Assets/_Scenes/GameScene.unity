@@ -641,6 +641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75585ea84915844a86adbb7659629a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   moveSpeed: 7
 --- !u!1 &2094100233
 GameObject:
@@ -934,6 +935,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3294758251545507755}
   - component: {fileID: 3294758251545507756}
+  - component: {fileID: 3294758251545507757}
   m_Layer: 0
   m_Name: PlayerVisual
   m_TagString: Untagged
@@ -978,6 +980,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3294758251545507757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3294758251545507752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e627b740a5fc146907b5e71fab01eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &3294758251727061248
 MeshRenderer:
   m_ObjectHideFlags: 0
