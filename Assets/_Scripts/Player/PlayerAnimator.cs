@@ -18,6 +18,6 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
-        animator.SetBool(IS_WALKING, ServiceLocator.Get<Player>().IsWalking());
+        animator.SetBool(IS_WALKING, Player.Instance.IsWalking());
     }
 }

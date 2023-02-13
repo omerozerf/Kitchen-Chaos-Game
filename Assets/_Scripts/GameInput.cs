@@ -1,10 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using EmreBeratKR.ServiceLocator;
 using UnityEngine;
 
-public class GameInput : ServiceBehaviour
+public class GameInput : MonoBehaviour
 {
+    public static GameInput Instance;
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+
     public Vector2 GetMovementVectorNormalized()
     {
         Vector2 inputVector = new Vector2(0, 0);

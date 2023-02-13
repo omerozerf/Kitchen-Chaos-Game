@@ -4,12 +4,21 @@ using System.Collections.Generic;
 using EmreBeratKR.ServiceLocator;
 using UnityEngine;
 
-public class Player : ServiceBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
 
-    private bool isWalking;
     
+    public static Player Instance;
+    private bool isWalking;
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+
     private void Update()
     {
         Move();
@@ -17,7 +26,7 @@ public class Player : ServiceBehaviour
 
     private void Move()
     {
-        var inputVector = ServiceLocator.Get<GameInput>().GetMovementVectorNormalized();
+        var inputVector = GameInput.Instance.GetMovementVectorNormalized();
         
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
         
