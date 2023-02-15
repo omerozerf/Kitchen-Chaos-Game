@@ -23,6 +23,36 @@ public class Player : MonoBehaviour
     }
 
 
+    private void Start()
+    {
+        GameInput.Instance.OnInteractAction += InstanceOnOnInteractAction;
+    }
+
+    private void InstanceOnOnInteractAction(object sender, EventArgs e)
+    {
+        var inputVector = GameInput.Instance.GetMovementVectorNormalized();
+        
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
+        float interactDistance = 2f;
+
+        if (moveDir != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
+
+        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance, counterLayerMask))
+        {
+            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
+            {
+                // Has ClearCounter
+                
+                clearCounter.Interact();
+            }
+        }
+    }
+
+
     private void Update()
     {
         HandleMovement();
@@ -110,7 +140,6 @@ public class Player : MonoBehaviour
             {
                 // Has ClearCounter
                 
-                clearCounter.Interact();
             }
         }
     }
