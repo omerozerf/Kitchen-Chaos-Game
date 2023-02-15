@@ -7,6 +7,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
+    [SerializeField] private LayerMask counterLayerMask;
+    
 
     
     public static Player Instance;
@@ -102,16 +104,15 @@ public class Player : MonoBehaviour
             lastInteractDir = moveDir;
         }
 
-        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance))
+        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance, counterLayerMask))
         {
-            Debug.Log(raycastHit.transform);
+            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
+            {
+                // Has ClearCounter
+                
+                clearCounter.Interact();
+            }
         }
-        else
-        {
-            Debug.Log("-");
-        }
-
-        
     }
 
     public bool IsWalking()
