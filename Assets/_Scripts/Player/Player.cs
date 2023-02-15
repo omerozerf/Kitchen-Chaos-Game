@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
 
     
     public static Player Instance;
+    
     private bool isWalking;
+    private Vector3 lastInteractDir;
 
 
     private void Awake()
@@ -21,11 +23,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        HandleMovement();
+        HandleInteractions();
         
     }
 
-    private void Move()
+    private void HandleMovement()
     {
         var inputVector = GameInput.Instance.GetMovementVectorNormalized();
         
@@ -86,8 +89,35 @@ public class Player : MonoBehaviour
         //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), Time.deltaTime * rotateSpeed );
     }
 
+    private void HandleInteractions()
+    {
+        var inputVector = GameInput.Instance.GetMovementVectorNormalized();
+        
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
+        float interactDistance = 2f;
+
+        if (moveDir != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
+
+        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance))
+        {
+            Debug.Log(raycastHit.transform);
+        }
+        else
+        {
+            Debug.Log("-");
+        }
+
+        
+    }
+
     public bool IsWalking()
     {
         return isWalking;
     }
+    
+    
 }
