@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3127ab64680fa8b499c7f76239741be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitchenObjectSO: {fileID: 11400000, guid: 9efba24a6c6050644bcea679fd424313, type: 2}
   counterTopPoint: {fileID: 3124163113030844139}
+  kitchenObjectSO: {fileID: 11400000, guid: 9efba24a6c6050644bcea679fd424313, type: 2}
 --- !u!4 &3124163113030844139 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1202207739189742405, guid: df8e7c668bad65c4d8129e5648039f92,
@@ -170,6 +170,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
+--- !u!1 &9175751715271649178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: 9a9137fa2b035d34e881701d2c178192,
+    type: 3}
+  m_PrefabInstance: {fileID: 4676744765866230576}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6548811232361072223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9175751715271649178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e505fdd9f3f22f4683c84e8cd104264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  containerCounter: {fileID: 6652666214843725796}
 --- !u!1001 &7086948034951425242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -306,6 +325,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7086948034951425242}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1393892863453427260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8143070647044102886, guid: 9a9137fa2b035d34e881701d2c178192,
+    type: 3}
+  m_PrefabInstance: {fileID: 7086948034951425242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6766683416726587504 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: 9a9137fa2b035d34e881701d2c178192,
@@ -324,5 +349,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90e0b39036385f4f99bc96f01e7d6dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearCounter: {fileID: 0}
-  visualGameObject: {fileID: 1018622004857330101}
+  baseCounter: {fileID: 6652666214843725796}
+  visualGameObjectArray:
+  - {fileID: 7148814439903815735}
+  - {fileID: 1018622004857330101}
+  - {fileID: 1393892863453427260}
+--- !u!1 &7148814439903815735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 102550813385737453, guid: 9a9137fa2b035d34e881701d2c178192,
+    type: 3}
+  m_PrefabInstance: {fileID: 7086948034951425242}
+  m_PrefabAsset: {fileID: 0}
