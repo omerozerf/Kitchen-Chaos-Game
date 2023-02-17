@@ -412,7 +412,7 @@ PrefabInstance:
     - target: {fileID: 6879595450077103837, guid: 1faede6a59a76a04988dd73ce1150602,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.2365904
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 6879595450077103837, guid: 1faede6a59a76a04988dd73ce1150602,
         type: 3}
@@ -422,7 +422,7 @@ PrefabInstance:
     - target: {fileID: 6879595450077103837, guid: 1faede6a59a76a04988dd73ce1150602,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0065901484
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 6879595450077103837, guid: 1faede6a59a76a04988dd73ce1150602,
         type: 3}
@@ -459,6 +459,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8120288669892334666, guid: 1faede6a59a76a04988dd73ce1150602,
+        type: 3}
+      propertyPath: cutKitchenObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 2701ca973999f3d41b78dba2eb712cd8,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1faede6a59a76a04988dd73ce1150602, type: 3}
 --- !u!1 &170251321
