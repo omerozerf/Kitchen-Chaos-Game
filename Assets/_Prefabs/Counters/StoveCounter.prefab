@@ -106,6 +106,8 @@ MonoBehaviour:
   counterTopPoint: {fileID: 1318295571216919141}
   fryingRecipeSOArray:
   - {fileID: 11400000, guid: 3c2d9e9ee2b7f574a97b561cde756846, type: 2}
+  burningRecipeSOArray:
+  - {fileID: 11400000, guid: 6f599ef6d551d664d896a9c4b2505b81, type: 2}
 --- !u!4 &2341801749606220983 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2493691337989252503, guid: df8e7c668bad65c4d8129e5648039f92,
@@ -241,6 +243,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1a0afd856a35421469b28b916116fd9c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93af8b85a17635f40a5b76ed82a86c18, type: 3}
+--- !u!1 &1568791928078904325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 17251720544094567, guid: 93af8b85a17635f40a5b76ed82a86c18,
+    type: 3}
+  m_PrefabInstance: {fileID: 1583083075505431906}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2965410661995190669 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4386361873462607087, guid: 93af8b85a17635f40a5b76ed82a86c18,
@@ -273,6 +281,12 @@ MonoBehaviour:
 --- !u!1 &5811379551126497907 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4998458208842551057, guid: 93af8b85a17635f40a5b76ed82a86c18,
+    type: 3}
+  m_PrefabInstance: {fileID: 1583083075505431906}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6740202362194787212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5220305274835918574, guid: 93af8b85a17635f40a5b76ed82a86c18,
     type: 3}
   m_PrefabInstance: {fileID: 1583083075505431906}
   m_PrefabAsset: {fileID: 0}
@@ -351,3 +365,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93af8b85a17635f40a5b76ed82a86c18, type: 3}
+--- !u!1 &6322538685728491957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: 93af8b85a17635f40a5b76ed82a86c18,
+    type: 3}
+  m_PrefabInstance: {fileID: 7498449847610928415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5650868664100255979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322538685728491957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7416326dc06a4e9695c7460ca7685d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stoveCounter: {fileID: 125119389174516766}
+  stoveOnGameObject: {fileID: 1568791928078904325}
+  particlesOnGameObject: {fileID: 6740202362194787212}
