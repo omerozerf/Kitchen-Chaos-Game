@@ -13,7 +13,7 @@ public class ProgressBarUI : MonoBehaviour
     {
         cuttingCounter.OnProgressChanged += CuttingCounterOnOnProgressChanged;
         barImage.fillAmount = 0f;
-        
+         
         Hide();
     }
 
