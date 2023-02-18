@@ -980,7 +980,7 @@ PrefabInstance:
     - target: {fileID: 7006611758457009758, guid: 1faede6a59a76a04988dd73ce1150602,
         type: 3}
       propertyPath: mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8120288669892334666, guid: 1faede6a59a76a04988dd73ce1150602,
         type: 3}
@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be4d466143c58b4db40f40f042ff888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 1
+  mode: 2
 --- !u!1 &1138278766
 GameObject:
   m_ObjectHideFlags: 0
