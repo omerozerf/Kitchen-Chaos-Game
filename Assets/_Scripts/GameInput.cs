@@ -12,6 +12,7 @@ public class GameInput : MonoBehaviour
 
     private PlayerInputActions playerInputActions;
     public event EventHandler OnInteractAlternateAction;
+    public event EventHandler OnPauseAction;
     
     private void Awake()
     {
@@ -21,6 +22,12 @@ public class GameInput : MonoBehaviour
         
         playerInputActions.Player.Interact.performed += InteractOnperformed;
         playerInputActions.Player.InteractAlternate.performed += InteractAlternateOnperformed;
+        playerInputActions.Player.Pause.performed += PauseOnperformed;
+    }
+
+    private void PauseOnperformed(InputAction.CallbackContext obj)
+    {
+        OnPauseAction?.Invoke(this, EventArgs.Empty);
     }
 
     private void InteractAlternateOnperformed(InputAction.CallbackContext obj)
