@@ -110,7 +110,6 @@ public class Player : MonoBehaviour, IKitchenObjectParent
                 {
                     //Cannot move in any direction
                 }
-
             }
         }
 
