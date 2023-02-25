@@ -21,7 +21,7 @@ public class DeliveryResultUI : MonoBehaviour
         DeliveryManager.Instance.OnRecipeSuccess += InstanceOnOnRecipeSuccess;
         DeliveryManager.Instance.OnRecipeFailed += InstanceOnOnRecipeFailed;
         
-        gameObject.SetActive(false);
+        gameObject.SetActive(false); 
     }
 
     private void InstanceOnOnRecipeFailed(object sender, EventArgs e)
